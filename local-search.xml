@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2020/07/14/hello-world/"/>
-    <url>/2020/07/14/hello-world/</url>
+    <title>ML-LinearRegression</title>
+    <link href="/2020/07/15/ML-LinearRegression/"/>
+    <url>/2020/07/15/ML-LinearRegression/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="MachineLearning-LinearRegression"><a href="#MachineLearning-LinearRegression" class="headerlink" title="MachineLearning:LinearRegression"></a>MachineLearning:LinearRegression</h1><h2 id="1-Theory"><a href="#1-Theory" class="headerlink" title="1.Theory"></a>1.Theory</h2><h3 id="Step-1-Define-Function"><a href="#Step-1-Define-Function" class="headerlink" title="Step 1: Define Function"></a>Step 1: Define Function</h3><p>For given data set, we need to define a function to describe the relationship between input and output.</p><p>$$f_{w,b}(x)=\sum_{i}^nW_iX_i+b$$</p><p><strong>W</strong> is weight, <strong>b</strong> is intercept. For a simple example, $y=wx+b$</p><h3 id="Step-2-Cost-Function"><a href="#Step-2-Cost-Function" class="headerlink" title="Step 2: Cost Function"></a>Step 2: Cost Function</h3><p>Cost function is to measure the quality of our defined function. Here we use <strong>MSE(Mean Square Error)</strong></p><p>$$L(f(x))=\frac{1}{N}\sum_{i=1}^n(\hat{f(x_i)} -y_i)^2$$</p><p>Notes</p><ul><li>N is total number of data</li><li>$\hat{f(x)}$ is estimated output by our defined function, $y_i$ is the actual output</li><li>$L(f)$  is the loss function</li></ul><h3 id="Step3-Optimal-Function-Gradient-Descent"><a href="#Step3-Optimal-Function-Gradient-Descent" class="headerlink" title="Step3: Optimal Function-Gradient Descent"></a>Step3: Optimal Function-Gradient Descent</h3><p>How to choose the best function? In other words, how could we choose <strong>the best parameter w,b</strong> ?</p><p>If we can get <strong>minimum cost</strong>, that means we find the best function. To achieve it, we need to calculate <strong>partial derivatives of parameters</strong> to decide the direction of update and <strong>learning rate</strong> to determine how much should we update.</p><p>$$w\gets w - \eta *\frac{dL(f(x))}{dw}$$</p><p>$$b \gets b - \eta *\frac{dL(f(x))}{db}$$</p><p>Notes:</p><ul><li>$\eta$ is learning rate</li><li>normally, w and b could be put in one vector $W={w \brack b}$</li><li>derivatives could be $\nabla L={dw \brack db}$</li><li>thus, simplify it as $W=W-\eta * \nabla L$</li><li>when derivates are equal to 0, stop update.</li></ul><h2 id="2-Code"><a href="#2-Code" class="headerlink" title="2.Code"></a>2.Code</h2><pre><code class="hljs python"><span class="hljs-string">"""</span><span class="hljs-string">interations: numbers of update</span><span class="hljs-string">W:matrix of parameters</span><span class="hljs-string">X:input</span><span class="hljs-string">Y:Actual Data Output </span><span class="hljs-string">learning_rate:same as name</span><span class="hljs-string"></span><span class="hljs-string">return: W matrix</span><span class="hljs-string">"""</span>W=init_parameters()<span class="hljs-keyword">for</span> each_time <span class="hljs-keyword">in</span>  interations:Cost=calculate_cost(W,X,Y)Dw=calculate_derivatives(Cost,W)W-=learing_rate*Dw<span class="hljs-keyword">return</span> W</code></pre>]]></content>
     
     
+    <categories>
+      
+      <category>Machine Learning Notes</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Machine Learning</tag>
+      
+    </tags>
     
   </entry>
   
